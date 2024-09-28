@@ -1,2 +1,2 @@
-# hs-template
-Template project for High Stakes VEX competition by SystemError (21919A).
+# hs-turn
+Autonomous driving back and forward to calibrate pid_turner.turn

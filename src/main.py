@@ -23,7 +23,20 @@ def autonomous_function():
 
     log(("Competition", "competition"), "autonomous_begin")
 
-    # Add autonomous logic here
+    # Keep turning until a collision
+    while not inertial.latest_collision:
+
+        # Turn right and left to the same heading
+        for setpoint in [90, 120, 60, 90, -90, -120, -60, -90]:
+            pid_turner.turn(setpoint, FRAME_HEADING_RELATIVE)
+
+            # Give inertial sensor time to settle
+            sleep(1000, TimeUnits.MSEC)
+
+            reset_odometry_to_gps()
+
+            if inertial.latest_collision:
+                break
 
     log(("Competition", "competition"), "autonomous_end")
 
