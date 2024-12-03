@@ -28,12 +28,12 @@ def autonomous_function():
 
         # Turn right and left to the same heading
         for setpoint in [90, 120, 60, 90, -90, -120, -60, -90]:
-            pid_turner.turn(setpoint, FRAME_HEADING_RELATIVE)
+            trigger_turner.turn(setpoint, FRAME_HEADING_RELATIVE)
 
             # Give inertial sensor time to settle
             sleep(1000, TimeUnits.MSEC)
 
-            reset_odometry_to_gps()
+            reset_robot_position_and_heading_to_gps()
 
             if inertial.latest_collision:
                 break
